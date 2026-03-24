@@ -1,0 +1,15 @@
+def get_gesture_action(fingers):
+    if fingers == 0:
+        return "Close Gripper"
+    elif fingers == 5:
+        return "Open Gripper"
+    elif fingers == 1:
+        return "Move Forward"
+    elif fingers == 2:
+        return "Rotate Arm"
+    else:
+        return "Idle"
+
+
+# Test
+print(get_gesture_action(2))
