@@ -3,27 +3,29 @@
 ---
 
 ## 📌 Overview
-This project implements a real-time gesture-controlled robotic arm system using computer vision and embedded control.
+This project demonstrates a real-time **gesture-controlled robotic arm** using computer vision and embedded systems.
 
-A webcam captures hand gestures, which are processed using OpenCV and MediaPipe on a Raspberry Pi. Based on the number of fingers detected, control signals are generated to move servo motors of a robotic arm.
+A webcam captures hand gestures, which are processed using **OpenCV** and **MediaPipe**. Based on detected finger patterns, control signals are generated and sent to **Raspberry Pi GPIO**, which drives servo motors to control a robotic arm.
 
 ---
 
 ## 🎯 Objectives
-- To implement real-time hand gesture recognition
-- To control a robotic arm using vision-based input
-- To integrate software (OpenCV) with hardware (Raspberry Pi & servos)
+- Develop a real-time hand gesture recognition system
+- Interface computer vision with embedded hardware
+- Control robotic movement using intuitive gestures
+- Build a scalable base for AI-driven robotic systems
 
 ---
 
-## ⚙️ System Working
+## ⚙️ System Workflow
 
-1. Camera captures live video
-2. OpenCV processes the video frames
-3. MediaPipe detects hand landmarks
-4. Finger counting algorithm determines gesture
-5. Raspberry Pi generates PWM signals
-6. Servo motors move according to detected gesture
+1. Webcam captures live video feed  
+2. OpenCV processes each frame  
+3. MediaPipe detects hand landmarks  
+4. Finger counting logic identifies gesture  
+5. Raspberry Pi processes gesture input  
+6. PWM signals generated for servo motors  
+7. Robotic arm performs corresponding action  
 
 ---
 
@@ -35,40 +37,50 @@ Camera → OpenCV → MediaPipe → Finger Detection → Raspberry Pi → Servo 
 
 ## 🧩 Block Diagram
 
-![Block Diagram](images/block_diagram.png)
+![Block Diagram](robo arm block github.png)
 
 ---
 
-## 💻 Software Requirements
+## 🚀 Advanced Version
 
-- Python 3.10+
-- OpenCV
-- MediaPipe
-- NumPy
-- RPi.GPIO (for Raspberry Pi)
+An enhanced version of this project includes **gesture labeling and smarter control logic**.
 
-Install all dependencies:
+📁 Folder: `advanced_version/`
 
+👉 Run:
 ```bash
+python advanced_version/smart_gesture_control.py
+✨ Enhancements
+Gesture labeling (START, STOP, PICK, DROP)
+Improved detection stability
+Better user feedback via display
+Scalable for multi-servo control
+💻 Software Requirements
+Python 3.10+
+OpenCV (cv2)
+MediaPipe
+NumPy
+RPi.GPIO (for Raspberry Pi)
+📦 Install Dependencies
 pip install -r requirements.txt
 🔌 Hardware Requirements
-| Component    | Specification                       |
-| ------------ | ----------------------------------- |
-| Raspberry Pi | Raspberry Pi 4 / 5                  |
-| Camera       | USB Webcam                          |
-| Servo Motor  | SG90 / MG90S                        |
-| Servo Driver | PCA9685 (recommended)               |
-| Power Supply | 5V 2A (Pi) + 5V External for servos |
-| Jumper Wires | Male-Female                         |
-🔧 Hardware Connections
-| PCA9685 | Raspberry Pi |
-| ------- | ------------ |
-| VCC     | 5V           |
-| GND     | GND          |
-| SDA     | GPIO2        |
-| SCL     | GPIO3        |
+Component	Specification
+Raspberry Pi	Raspberry Pi 4 / 5
+Camera	USB Webcam
+Servo Motor	SG90 / MG90S
+Servo Driver	PCA9685 (Recommended)
+Power Supply	5V 2A (Pi) + External 5V for servos
+Jumper Wires	Male-Female
+🔧 Hardware Connections (PCA9685)
+PCA9685 Pin	Raspberry Pi
+VCC	5V
+GND	GND
+SDA	GPIO2
+SCL	GPIO3
+
 ⚠️ Important:
-Do NOT power servos directly from Raspberry Pi
+Do NOT power servos directly from Raspberry Pi — use an external supply.
+
 📂 Project Structure
 gesture_detection/
    └── hand_tracking.py
@@ -76,9 +88,14 @@ gesture_detection/
 servo_control/
    └── servo_driver.py
 
+advanced_version/
+   ├── smart_gesture_control.py
+   └── README_advanced.md
+
+main.py
 requirements.txt
 README.md
-images/
+robo arm block github.png
 ▶️ How to Run
 Step 1: Install Dependencies
 pip install -r requirements.txt
@@ -95,22 +112,20 @@ Fingers Detected	Action
 4	Servo → 150°
 5	Servo → 180°
 ⚠️ Challenges Faced
-Servo jitter due to unstable power
+Servo jitter due to unstable power supply
 MediaPipe compatibility with Python versions
-Real-time processing delay
+Real-time processing latency
+Calibration of gesture detection accuracy
 🔮 Future Scope
-Multi-servo robotic arm (5 DOF)
+Multi-DOF robotic arm control
 Wireless control using WiFi/Bluetooth
-AI-based gesture classification (ML model)
+AI-based gesture classification (ML/DL models)
 Mobile app integration
+Industrial automation applications
 👨‍💻 Author
 
-Gauri
-Instrumentation & Control Engineering
-VIT Pune
-
+Gauri S Lohate
 ⭐ Acknowledgment
 OpenCV Documentation
 MediaPipe by Google
 Raspberry Pi Community
-
