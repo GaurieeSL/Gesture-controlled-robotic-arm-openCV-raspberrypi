@@ -1,90 +1,116 @@
-# Gesture Controlled Robotic Arm 🤖
-
-## 📌 Overview
-This project uses computer vision and Raspberry Pi to control a robotic arm using hand gestures.
+# 🤖 Gesture Controlled Robotic Arm using OpenCV & Raspberry Pi
 
 ---
 
-## 🚀 Features
-- Real-time hand tracking using MediaPipe
-- Finger counting using OpenCV
-- Servo motor control using Raspberry Pi GPIO
-- Gesture-based robotic control
+## 📌 Overview
+This project implements a real-time gesture-controlled robotic arm system using computer vision and embedded control.
+
+A webcam captures hand gestures, which are processed using OpenCV and MediaPipe on a Raspberry Pi. Based on the number of fingers detected, control signals are generated to move servo motors of a robotic arm.
+
+---
+
+## 🎯 Objectives
+- To implement real-time hand gesture recognition
+- To control a robotic arm using vision-based input
+- To integrate software (OpenCV) with hardware (Raspberry Pi & servos)
+
+---
+
+## ⚙️ System Working
+
+1. Camera captures live video
+2. OpenCV processes the video frames
+3. MediaPipe detects hand landmarks
+4. Finger counting algorithm determines gesture
+5. Raspberry Pi generates PWM signals
+6. Servo motors move according to detected gesture
 
 ---
 
 ## 🧠 System Architecture
-Camera → OpenCV → Finger Detection → Raspberry Pi → Servo Driver → Robotic Arm
+
+Camera → OpenCV → MediaPipe → Finger Detection → Raspberry Pi → Servo Driver → Robotic Arm
 
 ---
 
 ## 🧩 Block Diagram
+
 ![Block Diagram](images/block_diagram.png)
 
 ---
 
-## 📂 Project Structure
-gesture_detection/ → Hand tracking code  
-servo_control/ → Servo control code  
-requirements.txt → Python libraries  
+## 💻 Software Requirements
 
----
-# Gesture Controlled Robotic Arm 🤖
+- Python 3.10+
+- OpenCV
+- MediaPipe
+- NumPy
+- RPi.GPIO (for Raspberry Pi)
 
-## 📌 Overview
-This project uses computer vision and Raspberry Pi to control a robotic arm using hand gestures.
+Install all dependencies:
 
----
+```bash
+pip install -r requirements.txt
+🔌 Hardware Requirements
+| Component    | Specification                       |
+| ------------ | ----------------------------------- |
+| Raspberry Pi | Raspberry Pi 4 / 5                  |
+| Camera       | USB Webcam                          |
+| Servo Motor  | SG90 / MG90S                        |
+| Servo Driver | PCA9685 (recommended)               |
+| Power Supply | 5V 2A (Pi) + 5V External for servos |
+| Jumper Wires | Male-Female                         |
+🔧 Hardware Connections
+| PCA9685 | Raspberry Pi |
+| ------- | ------------ |
+| VCC     | 5V           |
+| GND     | GND          |
+| SDA     | GPIO2        |
+| SCL     | GPIO3        |
+⚠️ Important:
+Do NOT power servos directly from Raspberry Pi
+📂 Project Structure
+gesture_detection/
+   └── hand_tracking.py
 
-## 🚀 Features
-- Real-time hand tracking using MediaPipe
-- Finger counting using OpenCV
-- Servo motor control using Raspberry Pi GPIO
-- Gesture-based robotic control
+servo_control/
+   └── servo_driver.py
 
----
+requirements.txt
+README.md
+images/
+▶️ How to Run
+Step 1: Install Dependencies
+pip install -r requirements.txt
+Step 2: Run Gesture Detection
+python gesture_detection/hand_tracking.py
+Step 3: Run Servo Control (on Raspberry Pi)
+python servo_control/servo_driver.py
+🎮 Gesture Mapping
+Fingers Detected	Action
+0	Servo → 0°
+1	Servo → 45°
+2	Servo → 90°
+3	Servo → 120°
+4	Servo → 150°
+5	Servo → 180°
+⚠️ Challenges Faced
+Servo jitter due to unstable power
+MediaPipe compatibility with Python versions
+Real-time processing delay
+🔮 Future Scope
+Multi-servo robotic arm (5 DOF)
+Wireless control using WiFi/Bluetooth
+AI-based gesture classification (ML model)
+Mobile app integration
+👨‍💻 Author
 
-## 🧠 System Architecture
-Camera → OpenCV → Finger Detection → Raspberry Pi → Servo Driver → Robotic Arm
-
----
-
-## 🧩 Block Diagram
-![Block Diagram](images/block_diagram.png)
-
----
-
-## 📂 Project Structure
-gesture_detection/ → Hand tracking code  
-servo_control/ → Servo control code  
-requirements.txt → Python libraries  
-
----
-
-## ▶️ How to Run
-
-### Install Dependencies
-
----
-
-## 🔌 Hardware Required
-- Raspberry Pi 5
-- Servo Motors / Robotic Arm
-- Camera (Webcam)
-- Power Supply
-- servo driver 
-
----
-
-## 🔮 Future Scope
-- Multi-servo robotic arm
-- Wireless control
-- AI gesture classification
-
----
-
-## 👨‍💻 Author
 Gauri
-## ▶️ How to Run
+Instrumentation & Control Engineering
+VIT Pune
 
-### Install Dependencies
+⭐ Acknowledgment
+OpenCV Documentation
+MediaPipe by Google
+Raspberry Pi Community
+
